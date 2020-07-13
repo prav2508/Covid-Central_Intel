@@ -12,7 +12,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 result={}
 pkl_filename = 'covid_prediction_model.pkl'
-poly_feat = PolynomialFeatures(degree=2)
+poly_feat = PolynomialFeatures(degree=4)
 
 @app.route('/')
 @cross_origin()
@@ -27,7 +27,6 @@ def predict(date):
     print(selected_date)
     with open(pkl_filename, 'rb') as file:
         pickle_model = pickle.load(file)
-
     predicted = pickle_model.predict(poly_feat.fit_transform([[int(selected_date[0]),int(selected_date[1]),int(selected_date[2])]]))
     #predicted = pickle_model.predict(poly_feat.fit_transform([[2020,7,5]]))
     count = int(predicted.ravel()[0])
