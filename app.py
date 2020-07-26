@@ -12,7 +12,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 result={}
 pkl_filename = 'covid_prediction_model.pkl'
-poly_feat = PolynomialFeatures(degree=5)
+poly_feat = PolynomialFeatures(degree=4)
 
 @app.route('/')
 @cross_origin()
